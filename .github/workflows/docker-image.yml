@@ -17,9 +17,16 @@ jobs:
     - name: Get the version
       id: get_version
       run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
+    - name: Calculate version
+      id: calculate_version
+      run: |
+        if [ "${{ steps.get_version.outputs.VERSION }}" == "master" ]; then 
+          echo ::set-output name=VERSION::$(echo "latest")
+        else
+          echo ::set-output name=VERSION::"$( ${{ steps.get_version.outputs.VERSION }} )"
     - name: Show version
       id: show_version
-      run: echo ${{ steps.get_version.outputs.VERSION }}
+      run: echo ${{ steps.calculate_version.outputs.VERSION }}
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Login to DockerHub
