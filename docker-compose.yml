@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  test:
+    image: intershophub/jmeter
+    container_name: jmeter
+    build:
+      context: .
+      target: gui
+    tty: true
+    environment:
+      - TEST_DIR=test
+      - TEST_PLAN=ThreadGroup
+    volumes:
+      - ./sample/:/tests
+      - ./sample/testlogs/:/testlogs
+      - ./sample/testdata/:/testdata
+    ports:
+      - 5900:5900
+      - 3390:3389
