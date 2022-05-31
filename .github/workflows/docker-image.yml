@@ -40,12 +40,12 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: intershophub/jmeter:latest
+        tags: intershophub/jmeter:${{ steps.calculate_version.outputs.VERSION }}
         target: nongui
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: intershophub/jmeter:latest-gui
+        tags: intershophub/jmeter:${{ steps.calculate_version.outputs.VERSION }}-gui
         target: gui
     
