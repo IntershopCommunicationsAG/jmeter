@@ -21,9 +21,11 @@ jobs:
       id: calculate_version
       run: |
         if [ "${{ steps.get_version.outputs.VERSION }}" == "master" ]; then 
-          echo ::set-output name=VERSION::$(echo "latest")
+          NEWVERSION="latest"
         else
-          echo ::set-output name=VERSION::"$( ${{ steps.get_version.outputs.VERSION }} )"
+          NEWVERSION=${{ steps.get_version.outputs.VERSION }}
+        fi
+        echo ::set-output name=VERSION::$(echo ${NEWVERSION})
     - name: Show version
       id: show_version
       run: echo ${{ steps.calculate_version.outputs.VERSION }}
