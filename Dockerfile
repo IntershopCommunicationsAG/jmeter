@@ -18,6 +18,8 @@ RUN apk add --no-cache curl bash tzdata openjdk17 \
     && tar -xvf /tmp/jmeter.tgz -C /opt \
     && rm -f /tmp/jmeter.tgz \
     && rm -f /opt/apache-jmeter-*/lib/log4j-*.* \
+    && rm -f /opt/apache-jmeter-*/plugins/lib/log4j-*.* \
+    && rm -f /opt/apache-jmeter-*/plugins/lib/ext/log4j-*.* \
     && apk add --no-cache nss \
     && rm -rf /var/cache/apk/*
 
