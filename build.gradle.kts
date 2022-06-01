@@ -14,6 +14,9 @@ val plugins_lib by configurations.creating {
 val lib_ext by configurations.creating {
     extendsFrom(jmeterlibs)
 }
+val lib_log4j by configurations.creating {
+    extendsFrom(jmeterlibs)
+}
 //plugins/lib/ext
 dependencies {
     plugins_lib_ext("com.datadoghq:jmeter-datadog-backend-listener:0.3.0")
@@ -29,6 +32,12 @@ dependencies {
 
 //lib/ext
     lib_ext("org.mozilla:rhino-engine:1.7.13")
+
+// apache log4j
+    lib_log4j("org.apache.logging.log4j:log4j-1.2-api:2.17.2")
+    lib_log4j("org.apache.logging.log4j:log4j-api:2.17.2")
+    lib_log4j("org.apache.logging.log4j:log4j-core:2.17.2")
+    lib_log4j("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
 }
 
 repositories {
@@ -46,6 +55,9 @@ tasks {
         }
         from(lib_ext) {
             into("lib/ext")
+        }
+        from(lib_log4j) {
+            into("lib")
         }
         into(layout.buildDirectory.dir("jmeter"))
     }
