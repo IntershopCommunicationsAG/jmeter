@@ -28,7 +28,7 @@ jobs:
         echo ::set-output name=VERSION::$(echo ${NEWVERSION})
     - name: Show version
       id: show_version
-      run: echo "used version" ${{ steps.calculate_version.outputs.VERSION }}"
+      run: echo "used version ${{ steps.calculate_version.outputs.VERSION }}"
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
     - name: Login to DockerHub
