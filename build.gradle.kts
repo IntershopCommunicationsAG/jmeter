@@ -24,6 +24,7 @@ dependencies {
     plugins_lib_ext("com.blazemeter:jmeter-plugins-random-csv-data-set:0.8")
     plugins_lib_ext("com.microsoft.sqlserver:mssql-jdbc:10.2.1.jre17")
     plugins_lib_ext("com.oracle.database.jdbc:ojdbc10:19.14.0.0")
+    plugins_lib_ext("kg.apc:jmeter-plugins-functions:2.1")
 
 //plugins/lib
     plugins_lib("kg.apc:cmdrunner:2.3")
