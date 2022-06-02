@@ -23,12 +23,12 @@ RUN apk add --no-cache curl bash tzdata openjdk17 \
     && apk add --no-cache nss \
     && rm -rf /var/cache/apk/*
 
-COPY --from=gradle /home/gradle/project/build/jmeter ${JMETER_HOME}
+COPY --from=gradle /home/gradle/project/build/jmeter/ ${JMETER_HOME}
 
 COPY jmeter_cmd.sh /jmeter_cmd.sh
 
-RUN curl -o ${JMETER_HOME}/plugins/lib/ext/jmeter-plugins-resultscomparator-3.1.2.jar -L https://github.com/rbourga/jmeter-plugins-2/releases/download/v3.2.1/jmeter-plugins-resultscomparator-3.1.2.jar \
-    && curl -L https://jmeter-plugins.org/get/ > ${JMETER_HOME}/plugins/lib/ext/jmeter-plugins-manager.jar \
+RUN curl -o ${JMETER_HOME}/lib/ext/jmeter-plugins-resultscomparator-3.1.2.jar -L https://github.com/rbourga/jmeter-plugins-2/releases/download/v3.2.1/jmeter-plugins-resultscomparator-3.1.2.jar \
+    && curl -L https://jmeter-plugins.org/get/ > ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar \
     && echo "jmeter.save.saveservice.print_field_names=true" > $JMETER_BIN/user.properties \
     && echo "server.rmi.ssl.disable=true" >> $JMETER_BIN/user.properties \
     && echo "client.rmi.localport=1099" >> $JMETER_BIN/user.properties \
