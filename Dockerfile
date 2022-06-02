@@ -28,6 +28,7 @@ COPY --from=gradle /home/gradle/project/build/jmeter ${JMETER_HOME}
 COPY jmeter_cmd.sh /jmeter_cmd.sh
 
 RUN curl -o ${JMETER_HOME}/plugins/lib/ext/jmeter-plugins-resultscomparator-3.1.2.jar -L https://github.com/rbourga/jmeter-plugins-2/releases/download/v3.2.1/jmeter-plugins-resultscomparator-3.1.2.jar \
+    && curl -L https://jmeter-plugins.org/get/ > ${JMETER_HOME}/plugins/lib/ext/jmeter-plugins-manager.jar \
     && echo "jmeter.save.saveservice.print_field_names=true" > $JMETER_BIN/user.properties \
     && echo "server.rmi.ssl.disable=true" >> $JMETER_BIN/user.properties \
     && echo "client.rmi.localport=1099" >> $JMETER_BIN/user.properties \
@@ -55,7 +56,6 @@ ENV DISPLAY=":99" \
 RUN apk add --no-cache xfce4-terminal xvfb x11vnc xfce4 xrdp openssl icu-data-full \
 	&& apk add --no-cache nss \
 	&& rm -rf /var/cache/apk/* \
-    && curl -L https://jmeter-plugins.org/get/ > ${JMETER_HOME}/lib/ext/jmeter-plugins-manager.jar \
     && x11vnc -storepasswd ${PASS} /etc/x11vnc.pass \
     && echo "[Globals]" > /etc/xrdp/xrdp.ini \
     && echo "bitmap_cache=true" >> /etc/xrdp/xrdp.ini \
