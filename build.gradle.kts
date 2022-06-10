@@ -18,10 +18,6 @@ dependencies {
     lib_ext("com.microsoft.sqlserver:mssql-jdbc:10.2.1.jre17")
     lib_ext("com.oracle.database.jdbc:ojdbc10:19.14.0.0")
     lib_ext("kg.apc:jmeter-plugins-functions:2.1")
-    // remove log4j shell
-    lib_ext("org.apache.logging.log4j:log4j-slf4j-impl:2.17.2")
-    lib_ext("org.apache.logging.log4j:log4j-api:2.17.2")
-    lib_ext("org.apache.logging.log4j:log4j-core:2.17.2")
 
     lib_ext("org.mozilla:rhino-engine:1.7.13")
 

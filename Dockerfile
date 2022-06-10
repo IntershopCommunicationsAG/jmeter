@@ -13,13 +13,12 @@ ENV PATH="${JMETER_BIN}:$PATH" \
     TZ="Europe/Amsterdam" \
     NONGUI="TRUE"
 
-RUN apk add --no-cache curl bash tzdata openjdk17 \
+RUN apk add --no-cache curl bash tzdata openjdk11 \
     && curl -L https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz > /tmp/jmeter.tgz \
     && tar -xvf /tmp/jmeter.tgz -C /opt \
     && rm -f /tmp/jmeter.tgz \
     && rm -f /opt/apache-jmeter-*/lib/log4j-*.* \
-    && rm -f /opt/apache-jmeter-*/plugins/lib/log4j-*.* \
-    && rm -f /opt/apache-jmeter-*/plugins/lib/ext/log4j-*.* \
+    && rm -f /opt/apache-jmeter-*/lib/ext/log4j-*.* \
     && apk add --no-cache nss \
     && rm -rf /var/cache/apk/*
 
