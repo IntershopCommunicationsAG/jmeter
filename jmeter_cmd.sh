@@ -20,7 +20,7 @@ fi
 if [ ! -z "$TEST_DIR" -a ! -z "$TEST_PLAN" -a -d "/tests/${TEST_DIR}" ]
 then
   EXTRA_ARGS="$EXTRA_ARGS -t /tests/${TEST_DIR}/${TEST_PLAN}.jmx"
-  if [ ! -z "$NONGUI" -a ]
+  if [ ! -z "$NONGUI" ]
   then
     EXTRA_ARGS="$EXTRA_ARGS -X"
   fi
