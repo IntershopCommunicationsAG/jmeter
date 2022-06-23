@@ -12,7 +12,7 @@ val lib_ext by configurations.creating {
 
 //plugins/lib/ext
 dependencies {
-    lib_ext("com.datadoghq:jmeter-datadog-backend-listener:0.3.0")
+    lib_ext("com.datadoghq:jmeter-datadog-backend-listener:0.3.0:jar-with-dependencies")
     lib_ext("kg.apc:jmeter-plugins-casutg:2.10")
     lib_ext("com.blazemeter:jmeter-plugins-random-csv-data-set:0.8")
     lib_ext("com.microsoft.sqlserver:mssql-jdbc:10.2.1.jre17")
